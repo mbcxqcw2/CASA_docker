@@ -85,6 +85,16 @@ RUN pip install pyqt5
 RUN git clone https://github.com/mhvk/baseband
 RUN pip3 install baseband/
 
+##############
+#Install CASA#
+##############
+#Note: these instructions are adapted from: https://eor.cita.utoronto.ca/penwiki/CASA_(Python_3)
+
+#RUN apt-get -y install wget
+
+#get the casa tarball
+RUN curl https://casa.nrao.edu/download/distro/casa/release/rhel/casa-6.4.3-27-py3.6.tar.xz -o casa-6.4.3-27-py3.6.tar.xz
+
 
 ###########
 #Finish up#
