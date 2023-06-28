@@ -26,6 +26,23 @@ See: https://eor.cita.utoronto.ca/penwiki/CASA_(Python_3)
 - astropy: https://github.com/astropy/astropy (and dependencies)
 
 # Instructions to build Docker image
+
+To build docker image from this repository:
+
+a) git clone the repository
+b) navigate to the directory containing the dockerfile
+c) run:
+
+```
+docker build -f Dockerfile -t casa .
+```
+
+d) to find the created image, run:
+
+```
+docker images
+```
+
 # Instructions to run Docker image
 # Instructions to convert to singularity
 # Instructions to convert to charliecloud
