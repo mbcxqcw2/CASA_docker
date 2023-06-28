@@ -18,7 +18,7 @@ See: https://eor.cita.utoronto.ca/penwiki/CASA_(Python_3)
 
 - Get CASA working on the docker
 - Make sure it can be converted to singularity (Charlie's machine)
-- Make sure it runs on singularity
+- Make sure it runs on singularity (Raven)
 - Include casa tutorials from the EVN tutorial workshop at: https://www.jb.man.ac.uk/DARA/unit4/Workshops/EVN_continuum.html
 - Include other useful packages for coherent beamforming (tempo2, pulsarbat, j2ms2, tConvert)
 
