@@ -20,6 +20,11 @@ See: https://eor.cita.utoronto.ca/penwiki/CASA_(Python_3)
 - Include other useful packages for coherent beamforming (tempo2, pulsarbat, j2ms2, tConvert)
 
 # Dependencies installed
+
+- numpy
+- baseband: https://github.com/mhvk/baseband (and dependencies)
+- astropy: https://github.com/astropy/astropy (and dependencies)
+
 # Instructions to build Docker image
 # Instructions to run Docker image
 # Instructions to convert to singularity
