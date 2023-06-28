@@ -68,6 +68,23 @@ RUN curl -s https://bootstrap.pypa.io/get-pip.py -o get-pip.py && \
     python3 get-pip.py --force-reinstall && \
     rm get-pip.py
 
+###################################
+#Install necessary python packages#
+###################################
+
+#numpy
+RUN pip install numpy
+
+#matplotlib
+RUN pip install matplotlib
+
+#pyqt5 (for ipython gui backend)
+RUN pip install pyqt5
+
+#baseband by Marten van Kerkwijk
+RUN git clone https://github.com/mhvk/baseband
+RUN pip3 install baseband/
+
 
 ###########
 #Finish up#
