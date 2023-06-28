@@ -3,6 +3,7 @@
 #Author: C. Walker @ 28/06/2023
 #This docker contains software for analysing radio interferometry data
 
+#FROM ubuntu:16.04
 FROM nvidia/cuda:11.2.0-devel-ubuntu18.04
 
 MAINTAINER Charles Walker "cwalker@mpifr-bonn.mpg.de"
@@ -27,6 +28,19 @@ RUN apt-get update -y
 RUN apt-get -y install cmake
 RUN apt-get -y install git
 RUN apt-get -y install gcc
+
+#gfortran for tempo, psrchive, dspsr
+#RUN apt-get update
+#RUN apt-get -y install gfortran
+
+#fftw (for PSRCHIVE)
+RUN apt-get -y install libfftw3-3
+RUN apt-get -y install libfftw3-bin
+RUN apt-get -y install libfftw3-dev
+RUN apt-get -y install libfftw3-single3
+
+#fitsio (for DSPSR)
+RUN apt-get -y install libcfitsio-dev
 
 ####################################################
 #Install python version 3.9, necessary for baseband#
@@ -54,28 +68,11 @@ RUN curl -s https://bootstrap.pypa.io/get-pip.py -o get-pip.py && \
     python3 get-pip.py --force-reinstall && \
     rm get-pip.py
 
-###################################
-#Install necessary python packages#
-###################################
 
-#numpy
-RUN pip install numpy
-
-#matplotlib
-RUN pip install matplotlib
-
-#pyqt5 (for ipython gui backend)
-RUN pip install pyqt5
-
-#baseband by Marten van Kerkwijk
-RUN git clone https://github.com/mhvk/baseband
-RUN pip3 install baseband/
-
-############
+###########
 #Finish up#
 ###########
 
 #force reinstall jupyter, ipython so it contains necessary packages
 RUN pip install ipython --force-reinstall
 RUN pip install notebook --force-reinstall
-
