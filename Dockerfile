@@ -90,6 +90,12 @@ RUN pip3 install baseband/
 ##############
 #Note: these instructions are adapted from: https://eor.cita.utoronto.ca/penwiki/CASA_(Python_3)
 
+#make a new directory to hold casa
+RUN mkdir casa
+
+#navigate to directory
+WORKDIR /casa
+
 #get the casa tarball
 RUN curl https://casa.nrao.edu/download/distro/casa/release/rhel/casa-6.4.3-27-py3.6.tar.xz -o casa-6.4.3-27-py3.6.tar.xz
 
@@ -97,10 +103,20 @@ RUN curl https://casa.nrao.edu/download/distro/casa/release/rhel/casa-6.4.3-27-p
 RUN tar -xvf casa-6.4.3-27-py3.6.tar.xz
 
 #add the location of CASA to path
-ENV PATH="/casa-6.4.3-27/bin:${PATH}"
+ENV PATH="/casa/casa-6.4.3-27/bin:${PATH}"
+
+#navigate back to main working directory
+WORKDIR /
 
 #add a .casarc file to main working directory pointing to casa data folder
-RUN echo "measures.directory:/casa-6.4.3-27/data" > .casarc
+RUN echo "measures.directory:/casa/casa-6.4.3-27/data" > .casarc
+
+#run and exit casa for the first time so we can create config files
+RUN casa
+RUN exit
+
+#create simplest version of a casa config file
+RUN echo 'datapath=["/casa/casa-6.4.3-27/data"]\ntelemetry_enabled = True\ncrashreporter_enabled = True' > ${HOME}/.casa/config.py
 
 ###########
 #Finish up#
