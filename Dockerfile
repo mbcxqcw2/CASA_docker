@@ -90,8 +90,6 @@ RUN pip3 install baseband/
 ##############
 #Note: these instructions are adapted from: https://eor.cita.utoronto.ca/penwiki/CASA_(Python_3)
 
-#RUN apt-get -y install wget
-
 #get the casa tarball
 RUN curl https://casa.nrao.edu/download/distro/casa/release/rhel/casa-6.4.3-27-py3.6.tar.xz -o casa-6.4.3-27-py3.6.tar.xz
 

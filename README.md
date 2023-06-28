@@ -27,7 +27,7 @@ See: https://eor.cita.utoronto.ca/penwiki/CASA_(Python_3)
 - numpy
 - baseband: https://github.com/mhvk/baseband (and dependencies)
 - astropy: https://github.com/astropy/astropy (and dependencies)
-
+- casa (v6.4.3-27): https://casa.nrao.edu/download/distro/casa/release/rhel/casa-6.4.3-27-py3.6.tar.xz 
 # Instructions to build Docker image
 
 To build docker image from this repository:
