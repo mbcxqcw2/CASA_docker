@@ -1,7 +1,10 @@
 # Notes:
+
 Author: C. Walker @ 16/11/2022
+
 This docker environment contains software necessary for running CASA
 according to the instructions of UoT (CITA)'s Rebecca Lin.
+
 See: https://eor.cita.utoronto.ca/penwiki/CASA_(Python_3)
 
 # Computing notes:
@@ -30,7 +33,9 @@ See: https://eor.cita.utoronto.ca/penwiki/CASA_(Python_3)
 To build docker image from this repository:
 
 a) git clone the repository
+
 b) navigate to the directory containing the dockerfile
+
 c) run:
 
 ```
@@ -44,5 +49,13 @@ docker images
 ```
 
 # Instructions to run Docker image
+
+a) to run your created docker image, run:
+
+```
+docker run --rm -ti casa bash
+```
+
+
 # Instructions to convert to singularity
 # Instructions to convert to charliecloud
