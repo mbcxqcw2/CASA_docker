@@ -56,6 +56,14 @@ a) to run your created docker image, run:
 docker run --rm -ti casa bash
 ```
 
-
 # Instructions to convert to singularity
+
+a) to turn docker image into a singularity image, run:
+
+```
+docker run -v /var/run/docker.sock:/var/run/docker.sock -v <LOCATION>:/output --privileged -t --rm singularityware/docker2singularity casa
+```
+
+where `<LOCATION>` is the place you want to store your singularity image
+
 # Instructions to convert to charliecloud
