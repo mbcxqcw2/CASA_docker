@@ -5,14 +5,12 @@ Author: C. Walker @ 16/11/2022
 This docker environment contains software necessary for running CASA
 according to the instructions of UoT (CITA)'s Rebecca Lin.
 
-See: https://eor.cita.utoronto.ca/penwiki/CASA_(Python_3)
-
 # Computing notes:
 
 - On Charlie's machine, the git repository is stored at /Users/c.walker/CASA_Docker
-- The conversion to singularity is to be done on Charlie's machine
+- The conversion to singularity is done on Charlie's machine
 - The testing of singularity is to be done on Raven
-- The conversion to charliecloud is to be done on a machine when I find one with access to both Docker and charliecloud
+- The conversion to charliecloud is to be done on Raven
 
 # To do:
 
@@ -87,3 +85,5 @@ where `<IMAGE>` is the name of your created singularity image.
 Note: doing this, your image `$HOME` area is overwritten by your local `$HOME` area, which is automatically mounted to the image. Therefore the necessary `$HOME/.casa/` directory is overwritten, which is necessary to run casa properly. If you include `--contain` and `--no-home` in the singularity command, it does not mount the home area, but also doesn't let you see `$HOME` at all, which breaks casa. This must be fixed.
 
 # Instructions to convert to charliecloud
+
+- In the directory containing the Dockerfile, this will be something like: `ch-image build --force -t <NAME> -f Dockerfile .` where `<NAME>` is the name of the image to be created, however this currently fails.
