@@ -17,8 +17,14 @@ See: https://eor.cita.utoronto.ca/penwiki/CASA_(Python_3)
 # To do:
 
 - Get CASA working on the docker
+-- CASA loads, now must get GUIs working on the docker
 - Make sure it can be converted to singularity (Charlie's machine)
+-- Complete
 - Make sure it runs on singularity (Raven)
+-- Singularity image runs, but casa doesn't work correctly.
+-- Must make $HOME area work correctly
+-- Must make GUIs work correctly
+- Make sure it can be converted to charliecloud
 - Include casa tutorials from the EVN tutorial workshop at: https://www.jb.man.ac.uk/DARA/unit4/Workshops/EVN_continuum.html
 - Include other useful packages for coherent beamforming (tempo2, pulsarbat, j2ms2, tConvert)
 
@@ -56,6 +62,8 @@ a) to run your created docker image, run:
 docker run --rm -ti casa bash
 ```
 
+Note: currently we cannot run GUIs (e.g. ipython, casa GUIs) within this docker. We need to enable this somehow. Adding `-e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix` after `docker run` gets a little further through the process, but it is not completely fixed yet.
+
 # Instructions to convert to singularity
 
 a) to turn docker image into a singularity image, run:
@@ -65,5 +73,17 @@ docker run -v /var/run/docker.sock:/var/run/docker.sock -v <LOCATION>:/output --
 ```
 
 where `<LOCATION>` is the place you want to store your singularity image
+
+# Instructions to run singularity
+
+a) to run the created singularity shell, do:
+
+```
+singularity shell <IMAGE>
+```
+
+where `<IMAGE>` is the name of your created singularity image.
+
+Note: doing this, your image `$HOME` area is overwritten by your local `$HOME` area, which is automatically mounted to the image. Therefore the necessary `$HOME/.casa/` directory is overwritten, which is necessary to run casa properly. If you include `--contain` and `--no-home` in the singularity command, it does not mount the home area, but also doesn't let you see `$HOME` at all, which breaks casa. This must be fixed.
 
 # Instructions to convert to charliecloud
